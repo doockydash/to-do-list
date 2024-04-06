@@ -11,10 +11,8 @@
 3. [Getting Started](#3-getting-started)
 4. [Code Structure](#4-code-structure)
 5. [Dependencies](#5-dependencies)
-6. [Code Refactoring](#6-code-refactoring)
-7. [Deployment](#7-deployment)
-8. [Usage](#8-usage)
-9. [License](#9-license)
+6. [Usage](#6-usage)
+
 
 ## 1. Introduction
 
@@ -70,81 +68,10 @@ The project follows a modular and organized structure to enhance readability, ma
 - **Boxicons:** Icons library, linked through CDN.
 - **Google Fonts (Poppins):** Font used for the app, linked in the `style.css` file.
 
-## 6. Code Refactoring
 
-### Code Smells Addressed:
 
-1. **Monolithic Structure:**
-   - **Code Smell:** Original code had a monolithic structure, making it harder to maintain.
-   - **Refactoring:** Introduced modularization through separate classes (`TodoItemFormatter`, `TodoManager`, `UIManager`, and `ThemeSwitcher`), each with a distinct responsibility.
 
-2. **Global Functions:**
-   - **Code Smell:** Original code used global functions for event handling, reducing modularity.
-   - **Refactoring:** Event handling encapsulated within the `UIManager` class, promoting better organization and separation of concerns.
-
-3. **HTML Manipulation in Multiple Places:**
-   - **Code Smell:** Original code directly manipulated HTML in scattered locations.
-   - **Refactoring:** Centralized HTML manipulation within the `UIManager` class for consistency.
-
-4. **Lack of Error Handling:**
-   - **Code Smell:** Original code lacked proper error handling.
-   - **Refactoring:** Introduced error handling in the `UIManager` class for improved user experience and robustness.
-
-### SOLID Violations Addressed:
-
-1. **Single Responsibility Principle (SRP):**
-   - **Violation:** Original code violated SRP by combining UI, business logic, and theme handling.
-   - **Refactoring:** Responsibilities separated into different classes (`TodoManager`, `UIManager`, `ThemeSwitcher`), adhering to SRP.
-
-2. **Open/Closed Principle (OCP):**
-   - **Violation:** Original code was less extensible, requiring modifications for new features.
-   - **Refactoring:** Designed for extensibility, allowing addition of new features without modifying existing classes.
-
-3. **Dependency Inversion Principle (DIP):**
-   - **Violation:** Original code exhibited high coupling.
-   - **Refactoring:** Followed DIP by depending on abstractions, enhancing flexibility and testability.
-
-### Design Pattern Violations Addressed:
-
-1. **Observer Pattern for Event Handling:**
-   - **Violation:** Original code used inline event listeners.
-   - **Refactoring:** Employed Observer pattern by encapsulating event handling within the `UIManager` class.
-
-2. **Strategy Pattern for Task Formatting:**
-   - **Violation:** Original code lacked a clear strategy for formatting tasks.
-   - **Refactoring:** Introduced a `TodoItemFormatter` class, applying the Strategy pattern for consistent task formatting.
-
-3. **Singleton Pattern for Theme Handling:**
-   - **Violation:** Original code lacked a clear structure for theme handling.
-   - **Refactoring:** Introduced a `ThemeSwitcher` class, applying the Singleton pattern for centralized theme management and persistence.
-
-### Class Responsibilities:
-
-1. **TodoItemFormatter:**
-   - Responsible for formatting individual task items.
-   - Implements the Strategy pattern to ensure consistent and uniform task formatting.
-
-2. **TodoManager:**
-   - Manages the overall logic related to todos.
-   - Responsible for creating, editing, deleting, and toggling the status of todo items.
-   - Encapsulates the todos array, ensuring centralized control over the application's state.
-
-3. **UIManager:**
-   - Manages the user interface components and interactions.
-   - Handles event listeners for user actions such as adding, editing, and deleting todos.
-   - Responsible for displaying todos in the HTML, handling user inputs, and showing alert messages.
-   - Ensures separation of concerns between UI-related activities and application logic.
-
-4. **ThemeSwitcher:**
-   - Handles theme-related functionalities.
-   - Implements the Singleton pattern to ensure a single instance responsible for theme switching.
-   - Manages the application's theme by updating the HTML's data-theme attribute.
-
-## 7. Deployment
-
-The TO-DOIT App is deployed and accessible online. You can use the following link to access the application: [TO-DOIT](https://todotify.vercel.app/)
-
-## 8. Usage
+## 6. Usage
 
 1. **Adding a Task:**
    - Enter the task in the input field.
